@@ -1,78 +1,77 @@
-
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="220" viewBox="0 0 900 220">
-  <rect width="900" height="220" rx="12" fill="#ffffff"/>
-
-  <text x="20" y="50" font-family="Arial, sans-serif"
-        font-size="12" fill="#656d76">
-    Systems, hardware, and emulation
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="160" viewBox="0 0 900 160">
 
   <!-- MyOS -->
-  <rect x="20" y="68" width="275" height="132" rx="8"
+  <rect x="20" y="10" width="275" height="132" rx="8"
         fill="#ffffff" stroke="#d1d9e0"/>
-  <circle cx="40" cy="89" r="6" fill="#6366f1"/>
-  <text x="54" y="94" font-family="Arial, sans-serif"
+  <circle cx="40" cy="31" r="6" fill="#6366f1"/>
+  <text x="54" y="36" font-family="Arial, sans-serif"
         font-size="16" font-weight="bold" fill="#0969da">MyOS</text>
-  <text x="35" y="120" font-family="Arial, sans-serif"
+  <text x="35" y="62" font-family="Arial, sans-serif"
         font-size="12" fill="#656d76">Operating Systems · Systems</text>
-  <rect x="35" y="137" width="35" height="23" rx="11"
-        fill="#ddf4ff"/>
-  <text x="52.5" y="152" text-anchor="middle"
+
+  <rect x="35" y="79" width="35" height="23" rx="11" fill="#ddf4ff"/>
+  <text x="52.5" y="94" text-anchor="middle"
         font-family="Arial, sans-serif" font-size="11" fill="#0969da">C</text>
-  <rect x="76" y="137" width="43" height="23" rx="11"
-        fill="#ddf4ff"/>
-  <text x="97.5" y="152" text-anchor="middle"
+
+  <rect x="76" y="79" width="43" height="23" rx="11" fill="#ddf4ff"/>
+  <text x="97.5" y="94" text-anchor="middle"
         font-family="Arial, sans-serif" font-size="11" fill="#0969da">C++</text>
-  <rect x="125" y="137" width="75" height="23" rx="11"
-        fill="#fbefff"/>
-  <text x="162.5" y="152" text-anchor="middle"
+
+  <rect x="125" y="79" width="75" height="23" rx="11" fill="#fbefff"/>
+  <text x="162.5" y="94" text-anchor="middle"
         font-family="Arial, sans-serif" font-size="11" fill="#8250df">Assembly</text>
-  <text x="35" y="183" font-family="Arial, sans-serif"
+
+  <text x="35" y="125" font-family="Arial, sans-serif"
         font-size="11" fill="#656d76">Explore repository →</text>
+
 
   <!-- FPGA TPU -->
-  <rect x="312" y="68" width="276" height="132" rx="8"
+  <rect x="312" y="10" width="276" height="132" rx="8"
         fill="#ffffff" stroke="#d1d9e0"/>
-  <circle cx="332" cy="89" r="6" fill="#16a34a"/>
-  <text x="346" y="94" font-family="Arial, sans-serif"
+  <circle cx="332" cy="31" r="6" fill="#16a34a"/>
+  <text x="346" y="36" font-family="Arial, sans-serif"
         font-size="16" font-weight="bold" fill="#0969da">fpga-tpu</text>
-  <text x="327" y="120" font-family="Arial, sans-serif"
+  <text x="327" y="62" font-family="Arial, sans-serif"
         font-size="12" fill="#656d76">Hardware · AI / ML</text>
-  <rect x="327" y="137" width="104" height="23" rx="11"
-        fill="#ddf4ff"/>
-  <text x="379" y="152" text-anchor="middle"
+
+  <rect x="327" y="79" width="104" height="23" rx="11" fill="#ddf4ff"/>
+  <text x="379" y="94" text-anchor="middle"
         font-family="Arial, sans-serif" font-size="11" fill="#0969da">SystemVerilog</text>
-  <rect x="437" y="137" width="48" height="23" rx="11"
-        fill="#dafbe1"/>
-  <text x="461" y="152" text-anchor="middle"
+
+  <rect x="437" y="79" width="48" height="23" rx="11" fill="#dafbe1"/>
+  <text x="461" y="94" text-anchor="middle"
         font-family="Arial, sans-serif" font-size="11" fill="#1a7f37">FPGA</text>
-  <rect x="491" y="137" width="48" height="23" rx="11"
-        fill="#fbefff"/>
-  <text x="515" y="152" text-anchor="middle"
+
+  <rect x="491" y="79" width="48" height="23" rx="11" fill="#fbefff"/>
+  <text x="515" y="94" text-anchor="middle"
         font-family="Arial, sans-serif" font-size="11" fill="#8250df">TPU</text>
-  <text x="327" y="183" font-family="Arial, sans-serif"
+
+  <text x="327" y="125" font-family="Arial, sans-serif"
         font-size="11" fill="#656d76">Explore repository →</text>
 
+
   <!-- NES Emulator -->
-  <rect x="605" y="68" width="275" height="132" rx="8"
+  <rect x="605" y="10" width="275" height="132" rx="8"
         fill="#ffffff" stroke="#d1d9e0"/>
-  <circle cx="625" cy="89" r="6" fill="#ea580c"/>
-  <text x="639" y="94" font-family="Arial, sans-serif"
+  <circle cx="625" cy="31" r="6" fill="#ea580c"/>
+  <text x="639" y="36" font-family="Arial, sans-serif"
         font-size="16" font-weight="bold" fill="#0969da">NES-Emulator</text>
-  <text x="620" y="120" font-family="Arial, sans-serif"
+  <text x="620" y="62" font-family="Arial, sans-serif"
         font-size="12" fill="#656d76">Emulation · Systems · Games</text>
-  <rect x="620" y="137" width="43" height="23" rx="11"
-        fill="#ddf4ff"/>
-  <text x="641.5" y="152" text-anchor="middle"
+
+  <rect x="620" y="79" width="43" height="23" rx="11" fill="#ddf4ff"/>
+  <text x="641.5" y="94" text-anchor="middle"
         font-family="Arial, sans-serif" font-size="11" fill="#0969da">C++</text>
-  <rect x="669" y="137" width="43" height="23" rx="11"
-        fill="#fff1e5"/>
-  <text x="690.5" y="152" text-anchor="middle"
+
+  <rect x="669" y="79" width="43" height="23" rx="11" fill="#fff1e5"/>
+  <text x="690.5" y="94" text-anchor="middle"
         font-family="Arial, sans-serif" font-size="11" fill="#bc4c00">NES</text>
-  <rect x="718" y="137" width="76" height="23" rx="11"
-        fill="#fbefff"/>
-  <text x="756" y="152" text-anchor="middle"
+
+  <rect x="718" y="79" width="76" height="23" rx="11" fill="#fbefff"/>
+  <text x="756" y="94" text-anchor="middle"
         font-family="Arial, sans-serif" font-size="11" fill="#8250df">Emulator</text>
-  <text x="620" y="183" font-family="Arial, sans-serif"
+
+  <text x="620" y="125" font-family="Arial, sans-serif"
         font-size="11" fill="#656d76">Explore repository →</text>
+
 </svg>

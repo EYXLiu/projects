@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Projects</title>
+<style>
+  body {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: system-ui, sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+  }
+  h1 { margin-bottom: 8px; }
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0;
+  }
+  button {
+    cursor: pointer;
+    padding: 7px 12px;
+    border: 1px solid #30363d;
+    border-radius: 20px;
+    background: #161b22;
+    color: #e6edf3;
+  }
+  button.active {
+    background: #238636;
+    border-color: #238636;
+  }
+ .grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 450px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+  .project {
+    min-width: 0;
+  }
+  .project img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .tag { font-size: 12px; }
+  .project[hidden] { display: none; }
+  .display-tag {
+    display: inline-block;
+    padding: 7px 12px;
+    border: 1px solid #30363d;
+    border-radius: 20px;
+    background: #21262d;
+    color: #8b949e;
+    cursor: default;
+  }
+</style>
+</head>
+<body>
+
+<h1>My Projects</h1>
+<p>Explore my projects by language or category.</p>
+
+<h3>Language</h3>
+<div class="filters" id="languages"></div>
+
+<h3>Category</h3>
+<div class="filters" id="categories"></div>
+
+<p id="count"></p>
+<div class="grid" id="projects"></div>
+
+<script>
+const projects = [
+  {
+    repo: "MyOS",
+    language: ["C", "C++"],
+    categories: ["Operating systems", "Systems"],
+    display: ["Assembly"]
+  },
+  {
+    repo: "fpga-tpu",
+    language: ["SystemVerilog"],
+    categories: ["Hardware", "AI / ML"],
+    display: ["FPGA", "TPU"]
+  },
+  {
+    repo: "NES-Emulator",
+    language: ["C++"],
+    categories: ["Emulation", "Systems", "Games & Graphics"],
+    display: ["NES", "Emulator"]
+  },
+  {
+    repo: "Twitch-Chat-Load-Balancer",
+    language: ["Go"],
+    categories: ["Networking", "Backend"],
+    display: ["Load Balancing", "Twitch API"]
+  },
+  {
+    repo: "Cpp-Data-Pipeline",
+    language: ["C++"],
+    categories: ["Systems", "Data Engineering"],
+    display: ["Kraken Websocket", "Low Latency", "Data Pipeline"]
+  },
+  {
+    repo: "Large-Language-Model",
+    language: ["Python", "Jupyter Notebook"],
+    categories: ["AI / ML", "Data Science", "Research"],
+    display: ["LLM", "Transformers"]
+  },
+  {
+    repo: "Java-Messaging-Backend",
+    language: ["Java"],
+    categories: ["Backend", "Networking"],
+    display: ["Spring Boot", "Multithreading", "Kafka", "Redis", "MongoDB"]
+  },
+  {
+    repo: "AppSync",
+    language: ["Swift"],
+    categories: ["Systems", "Networking"],
+    display: ["XCode", "Bluetooth", "iOS / MacOS"]
+  },
+  {
+    repo: "ESP-GoTransit-Display",
+    language: ["C++", "Python"],
+    categories: ["Embedded Systems", "Hardware"],
+    display: ["ESP32", "Wokwi", "Flask"]
+  },
+  {
+    repo: "Cpp-Livestream",
+    language: ["C++"],
+    categories: ["Backend", "Networking"],
+    display: ["Multithreading", "OpenCV", "ML Integration", "HTTP", "Websockets"]
+  },
+  {
+    repo: "CTorch",
+    language: ["C++"],
+    categories: ["AI / ML", "Developer Tools", "Pytorch"],
+    display: ["Machine Learning Library"]
+  },
+  {
+    repo: "HandTracking",
+    language: ["Python"],
+    categories: ["AI / ML", "Computer Vision", "Pytorch"],
+    display: ["CNN", "OpenCV"]
+  },
+  {
+    repo: "4d-sim",
+    language: ["C#", "Python"],
+    categories: ["Games & Graphics", "Simulation"],
+    display: ["Godot", "4D"]
+  },
+  {
+    repo: "Embedded-Sensor-Network-Randomized-ML-Inference",
+    language: ["C"],
+    categories: ["Embedded Systems", "AI / ML"],
+    display: ["FreeRTOS", "Inference", "Sensor Network"]
+  },
+  {
+    repo: "ai-art",
+    language: ["Python", "Jupyter Notebook"],
+    categories: ["AI / ML", "Research"],
+    display: ["NOT AI", "OpenCV"]
+  },
+  {
+    repo: "Go-Video-System",
+    language: ["Go"],
+    categories: ["Backend", "Networking"],
+    display: ["Gin", "Video Transcoding", "Distributed Systems"]
+  },
+  {
+    repo: "Low-Latency-Networking-Service",
+    language: ["C++"],
+    categories: ["Networking", "Systems"],
+    display: ["Unix Sockets", "KQueue", "Low Latency"]
+  },
+  {
+    repo: "IrisClassifier",
+    language: ["Python", "Jupyter Notebook"],
+    categories: ["AI / ML", "Data Science", "Research"],
+    display: ["SVM", "Decision Trees", "Logistic Regression"]
+  },
+  {
+    repo: "VFS-Kernel",
+    language: ["C"],
+    categories: ["Operating Systems", "Systems"],
+    display: ["Raspberry Pi"]
+  },
+  {
+    repo: "Security-Lab",
+    language: ["C"],
+    categories: ["Networking", "Security", "Systems"],
+    display: ["Linux"]
+  },
+  {
+    repo: "Server-Side-Swift-Scheduler",
+    language: ["Swift", "C"],
+    categories: ["Backend", "Developer Tools", "Operating Systems"],
+    display: ["Scheduling", "Mach APIs"]
+  },
+  {
+    repo: "Driver-Suite",
+    language: ["C"],
+    categories: ["Embedded Systems", "Hardware"],
+    display: ["Raspberry Pi Pico", "Drivers", "Bare Metal"]
+  },
+  {
+    repo: "ChatHub",
+    language: ["C#"],
+    categories: ["Backend", "Networking"],
+    display: [".NET", "GraphQL", "Rest APIs", "Websockets"]
+  },
+  {
+    repo: "Safe-Portfolio-Generator",
+    language: ["Python"],
+    categories: ["Data Science", "Research"],
+    display: ["Portfolio Analysis", "Finance"]
+  },
+  {
+    repo: "RAG-Database-Backend",
+    language: ["Python"],
+    categories: ["AI / ML", "Backend", "RAG Project"],
+    display: ["RAG", "FastAPI", "Hugging Face", "Supabase", "Custom Database"]
+  },
+  {
+    repo: "RAG-Database-Website",
+    language: ["Typescript"],
+    categories: ["Web Development", "RAG Project"],
+    display: ["NextJS", "Supabase", "Vercel"]
+  },
+  {
+    repo: "RAG_Implementation",
+    language: ["Python", "Jupyter Notebook"],
+    categories: ["AI / ML", "Data Science", "RAG Project", "Research"],
+    display: ["Wikipedia", "Hugging Face"]
+  },
+  {
+    repo: "PokemonWebScraper",
+    language: ["Javascript"],
+    categories: ["Developer Tools"],
+    display: ["Web Scraping", "Data Collection"]
+  },
+  {
+    repo: "WatAIRedditSentimentAnalysis",
+    language: ["Python", "Jupyter Notebook"],
+    categories: ["AI / ML", "Data Science", "Research"],
+    display: ["Sentiment Analysis", "Reddit", "Data Collection"]
+  },
+  {
+    repo: "Two-Person-Conways-Game-Of-Life",
+    language: ["Python", "Jupyter Notebook"],
+    categories: ["Games & Graphics", "Simulation"],
+    display: []
+  },
+  {
+    repo: "Console-Wordle",
+    language: ["Python"],
+    categories: ["Games & Graphics"],
+    display: ["CLI"]
+  },
+];
+
+/*
+  {
+    repo: "",
+    language: [],
+    categories: [],
+    display: []
+  },
+*/
+
+let selectedLanguages = new Set();
+let selectedCategories = new Set();
+
+const languages = [
+  "All", ...new Set(projects.flatMap(p => p.language))
+];
+const categories = [
+  "All", ...new Set(projects.flatMap(p => p.categories))
+];
+
+function makeFilters(elementId, options, selected, onSelect) {
+  const container = document.getElementById(elementId);
+  container.replaceChildren();
+
+  options.forEach(option => {
+    const button = document.createElement("button");
+    button.textContent = option;
+
+    button.classList.toggle(
+      "active",
+      selected.has(option)
+    );
+    button.addEventListener("click", () => {
+      onSelect(option);
+    });
+    container.appendChild(button);
+  });
+}
+
+function render() {
+  makeFilters(
+    "languages",
+    languages.filter(l => l !== "All"),
+    selectedLanguages,
+    value => {
+      if (selectedLanguages.has(value)) {
+        selectedLanguages.delete(value);
+      } else {
+        selectedLanguages.add(value);
+      }
+      render();
+    }
+  );
+
+  makeFilters(
+    "categories",
+    categories.filter(c => c !== "All"),
+    selectedCategories,
+    value => {
+      if (selectedCategories.has(value)) {
+        selectedCategories.delete(value);
+      } else {
+        selectedCategories.add(value);
+      }
+      render();
+    }
+  );
+
+  const visible = projects.filter(p => {
+    const matchesLanguage =
+      selectedLanguages.size === 0 ||
+      p.language.some(l => selectedLanguages.has(l));
+
+    const matchesCategory =
+      selectedCategories.size === 0 ||
+      p.categories.some(c => selectedCategories.has(c));
+
+    if (
+      selectedLanguages.size > 0 &&
+      selectedCategories.size > 0
+    ) {
+      return matchesLanguage || matchesCategory;
+    }
+
+    return matchesLanguage && matchesCategory;
+  });
+
+  document.getElementById("count").textContent =
+    `${visible.length} projects`;
+
+  const grid = document.getElementById("projects");
+  grid.replaceChildren();
+
+  visible.forEach(p => {
+    const card = document.createElement("article");
+    card.className = "project";
+
+    const link = document.createElement("a");
+    link.href = `https://github.com/EYXLiu/${p.repo}`;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+
+    const image = document.createElement("img");
+    image.src =
+      "https://github-stats-extended.vercel.app/api/pin" +
+      "?username=EYXLiu" +
+      `&repo=${encodeURIComponent("EYXLiu/" + p.repo)}` +
+      "&description_lines_count=1&theme=light_github_repocard";
+    image.alt = `${p.repo} GitHub repository card`;
+    image.loading = "lazy";
+
+    link.appendChild(image);
+    card.appendChild(link);
+
+    const tags = document.createElement("div");
+    tags.className = "tags";
+
+    [...p.language, ...p.categories].forEach(tag => {
+      const button = document.createElement("button");
+      button.className = "tag";
+      button.textContent = tag;
+
+      button.addEventListener("click", () => {
+        if (p.language.includes(tag)) {
+            if (selectedLanguages.has(tag)) {
+            selectedLanguages.delete(tag);
+            } else {
+            selectedLanguages.add(tag);
+            }
+        } else if (p.categories.includes(tag)) {
+            if (selectedCategories.has(tag)) {
+            selectedCategories.delete(tag);
+            } else {
+            selectedCategories.add(tag);
+            }
+        }
+
+        render();
+      });
+
+      tags.appendChild(button);
+    });
+
+    (p.display || []).forEach(tag => {
+      const span = document.createElement("span");
+      span.className = "tag display-tag";
+      span.textContent = tag;
+      tags.appendChild(span);
+    });
+
+    card.appendChild(tags);
+    grid.appendChild(card);
+  });
+}
+
+render();
+</script>
+</body>
+</html>

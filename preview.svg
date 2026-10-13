@@ -2,10 +2,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="220" viewBox="0 0 900 220">
   <rect width="900" height="220" rx="12" fill="#ffffff"/>
 
-  <text x="20" y="30" font-family="Arial, sans-serif"
-        font-size="20" font-weight="bold" fill="#1f2328">
-    Featured Projects
-  </text>
   <text x="20" y="50" font-family="Arial, sans-serif"
         font-size="12" fill="#656d76">
     Systems, hardware, and emulation
